@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import Dropdown from "./components/dropdown";
 // import Accordion from "./components/accordion";
-import Search from "./components/search";
+// import Search from "./components/search";
 
 const App = () => {
   // const items = [
@@ -20,7 +21,21 @@ const App = () => {
   //       "Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.",
   //   },
   // ];
-  return <Search />;
+
+  const options = [
+    { label: "Red", value: "red" },
+    { label: "Blue", value: "blue" },
+    { label: "Green", value: "green" },
+  ];
+  const [selectedColor, setSelectedColor] = useState(options[0]);
+
+  return (
+    <Dropdown
+      options={options}
+      selected={selectedColor}
+      onSelectedChange={setSelectedColor}
+    />
+  );
 };
 
 export default App;
