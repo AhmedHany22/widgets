@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const [showDropDown, setShowDropDown] = useState(true);
 
@@ -41,7 +41,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
       {showDropDown ? (
         <div className="ui vertical menu">
-          <div className="header item">All Colors</div>
+          <div className="header item">{label}</div>
           <div
             onClick={() => setOpen(!open)}
             className={`ui fluid selection dropdown ${
