@@ -4,6 +4,7 @@ import Search from "./components/search";
 import Dropdown from "./components/dropdown";
 import Translate from "./components/translate";
 import Route from "./components/route";
+import Header from "./components/header";
 
 const App = () => {
   const items = [
@@ -32,38 +33,31 @@ const App = () => {
 
   return (
     <div className="ui">
-      <Route path="/">
-        <Accordion items={items} />
-      </Route>
-      <Route path="/search">
-        <Search />
-      </Route>
-      <Route path="/dropdown">
-        <Dropdown
-          label="Select a color"
-          options={options}
-          selected={selectedColor}
-          onSelectedChange={setSelectedColor}
-        />
-      </Route>
-      <Route path="/translate">
-        <Translate items={items} />
-      </Route>
+      <Header
+        className="two wide column"
+        style={{ height: "100vh", margin: 0 }}
+      />
+      <div className="ui">
+        <Route path="/">
+          <Accordion items={items} />
+        </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
+        <Route path="/dropdown">
+          <Dropdown
+            label="Select a color"
+            options={options}
+            selected={selectedColor}
+            onSelectedChange={setSelectedColor}
+          />
+        </Route>
+        <Route path="/translate">
+          <Translate items={items} />
+        </Route>
+      </div>
     </div>
   );
 };
 
 export default App;
-
-// const App = () => {
-
-//   return (
-//     <Dropdown
-//       options={options}
-//       selected={selectedColor}
-//       onSelectedChange={setSelectedColor}
-//     />
-//   );
-// };
-
-// export default App;
