@@ -32,31 +32,26 @@ const App = () => {
   const [selectedColor, setSelectedColor] = useState(options[0]);
 
   return (
-    <div className="ui">
-      <Header
-        className="two wide column"
-        style={{ height: "100vh", margin: 0 }}
-      />
-      <div className="ui">
-        <Route path="/">
-          <Accordion items={items} />
-        </Route>
-        <Route path="/search">
-          <Search />
-        </Route>
-        <Route path="/dropdown">
-          <Dropdown
-            label="Select a color"
-            options={options}
-            selected={selectedColor}
-            onSelectedChange={setSelectedColor}
-          />
-        </Route>
-        <Route path="/translate">
-          <Translate items={items} />
-        </Route>
-      </div>
-    </div>
+    <React.Fragment>
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/search">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          label="Select a color"
+          options={options}
+          selected={selectedColor}
+          onSelectedChange={setSelectedColor}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate items={items} />
+      </Route>
+    </React.Fragment>
   );
 };
 
