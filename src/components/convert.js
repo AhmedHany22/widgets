@@ -18,7 +18,6 @@ const Convert = ({ text, language }) => {
         }
       );
       setTranslatedText(data.data.translations[0].translatedText);
-      console.log(translatedText);
     };
     const translateTimer = setTimeout(() => {
       if (text) translate();
