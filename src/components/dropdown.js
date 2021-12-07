@@ -3,6 +3,23 @@ import React, { useEffect, useRef, useState } from "react";
 const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const [showDropDown, setShowDropDown] = useState(true);
+  const ref = useRef();
+
+  useEffect(() => {
+    const onBodyClick = (event) => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    };
+    document.body.addEventListener("click", onBodyClick, { capture: true });
+
+    return () => {
+      document.body.removeEventListener("click", onBodyClick, {
+        capture: true,
+      });
+    };
+  }, []);
 
   const renderOptions = options.map((option) => {
     if (option.value === selected.value) return null;
@@ -17,19 +34,6 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
     );
   });
 
-  const ref = useRef();
-
-  useEffect(() => {
-    const onBodyClick = (e) => {
-      if (ref.current.contains(e.target)) return;
-      setOpen(false);
-    };
-    document.body.addEventListener("click", onBodyClick);
-    return () => {
-      document.body.removeEventListener("click", onBodyClick);
-    };
-  });
-
   return (
     <div className="ui container" ref={ref} style={{ margin: "25px 0" }}>
       <button
@@ -40,7 +44,7 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
       </button>
 
       {showDropDown ? (
-        <div className="ui vertical menu">
+        <div className="ui form menu">
           <div className="header item">{label}</div>
           <div
             onClick={() => setOpen(!open)}
