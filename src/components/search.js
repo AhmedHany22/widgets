@@ -35,11 +35,19 @@ const Search = () => {
 
   const renderList = results.map((item) => {
     return (
-      <div class="item" style={{ borderColor: "DodgerBlue" }}>
-        <div class="right floated content" style={{ margin: "20px 0 10px" }}>
+      <div
+        className="item"
+        style={{ borderColor: "DodgerBlue" }}
+        key={item.pageid}
+      >
+        <div
+          className="right floated content"
+          style={{ margin: "20px 0 10px" }}
+        >
           <a
             href={`https://en.wikipedia.org?curid=${item.pageid}`}
-            class="ui button"
+            className="ui button"
+            target="_blank"
           >
             Go
           </a>
